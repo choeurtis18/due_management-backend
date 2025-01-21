@@ -1,0 +1,359 @@
+{
+    "info": {
+      "name": "Dues Management API",
+      "_postman_id": "your-id-here",
+      "description": "Collection to test all API routes for the dues management system",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Members",
+        "item": [
+          {
+            "name": "Get All Members",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:4000/api/members",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "4000",
+                "path": ["api", "members"]
+              }
+            }
+          },
+          {
+            "name": "Get Member by ID",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:4000/api/members/1",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "4000",
+                "path": ["api", "members", "1"]
+              }
+            }
+          },
+          {
+            "name": "Create Member",
+            "request": {
+              "method": "POST",
+              "header": [
+                { "key": "Content-Type", "value": "application/json" }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\"firstName\": \"John\", \"lastName\": \"Doe\"}"
+              },
+              "url": {
+                "raw": "http://localhost:4000/api/members",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "4000",
+                "path": ["api", "members"]
+              }
+            }
+          },
+          {
+            "name": "Update Member by ID",
+            "request": {
+              "method": "PATCH",
+              "header": [
+                { "key": "Content-Type", "value": "application/json" }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\"firstName\": \"John\", \"lastName\": \"Smith\"}"
+              },
+              "url": {
+                "raw": "http://localhost:4000/api/members/1",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "4000",
+                "path": ["api", "members", "1"]
+              }
+            }
+          },
+          {
+            "name": "Delete Member by ID",
+            "request": {
+              "method": "DELETE",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:4000/api/members/1",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "4000",
+                "path": ["api", "members", "1"]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Categories",
+        "item": [
+          {
+            "name": "Get All Categories",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:4000/api/categories",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "4000",
+                "path": ["api", "categories"]
+              }
+            }
+          },
+          {
+            "name": "Get Category by ID",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:4000/api/categories/1",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "4000",
+                "path": ["api", "categories", "1"]
+              }
+            }
+          },
+          {
+            "name": "Create Category",
+            "request": {
+              "method": "POST",
+              "header": [
+                { "key": "Content-Type", "value": "application/json" }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\"name\": \"Fitness\", \"description\": \"Cotisations pour la catégorie Fitness\"}"
+              },
+              "url": {
+                "raw": "http://localhost:4000/api/categories",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "4000",
+                "path": ["api", "categories"]
+              }
+            }
+          },
+          {
+            "name": "Update Category by ID",
+            "request": {
+              "method": "PATCH",
+              "header": [
+                { "key": "Content-Type", "value": "application/json" }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\"name\": \"Updated Fitness\", \"description\": \"Updated description\"}"
+              },
+              "url": {
+                "raw": "http://localhost:4000/api/categories/1",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "4000",
+                "path": ["api", "categories", "1"]
+              }
+            }
+          },
+          {
+            "name": "Delete Category by ID",
+            "request": {
+              "method": "DELETE",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:4000/api/categories/1",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "4000",
+                "path": ["api", "categories", "1"]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Months",
+        "item": [
+          {
+            "name": "Get All Months",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:4000/api/months",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "4000",
+                "path": ["api", "months"]
+              }
+            }
+          },
+          {
+            "name": "Get Month by ID",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:4000/api/months/1",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "4000",
+                "path": ["api", "months", "1"]
+              }
+            }
+          },
+          {
+            "name": "Create Month",
+            "request": {
+              "method": "POST",
+              "header": [
+                { "key": "Content-Type", "value": "application/json" }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\"name\": \"Janvier\", \"year\": 2024}"
+              },
+              "url": {
+                "raw": "http://localhost:4000/api/months",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "4000",
+                "path": ["api", "months"]
+              }
+            }
+          },
+          {
+            "name": "Update Month by ID",
+            "request": {
+              "method": "PATCH",
+              "header": [
+                { "key": "Content-Type", "value": "application/json" }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\"name\": \"Février\", \"year\": 2025}"
+              },
+              "url": {
+                "raw": "http://localhost:4000/api/months/1",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "4000",
+                "path": ["api", "months", "1"]
+              }
+            }
+          },
+          {
+            "name": "Delete Month by ID",
+            "request": {
+              "method": "DELETE",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:4000/api/months/1",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "4000",
+                "path": ["api", "months", "1"]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Dues",
+        "item": [
+          {
+            "name": "Get All Dues",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:4000/api/dues",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "4000",
+                "path": ["api", "dues"]
+              }
+            }
+          },
+          {
+            "name": "Get Due by ID",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:4000/api/dues/1",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "4000",
+                "path": ["api", "dues", "1"]
+              }
+            }
+          },
+          {
+            "name": "Create Due",
+            "request": {
+              "method": "POST",
+              "header": [
+                { "key": "Content-Type", "value": "application/json" }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\"amount\": 50.0, \"isLate\": false, \"memberId\": 1, \"categoryId\": 1, \"monthId\": 1}"
+              },
+              "url": {
+                "raw": "http://localhost:4000/api/dues",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "4000",
+                "path": ["api", "dues"]
+              }
+            }
+          },
+          {
+            "name": "Update Due by ID",
+            "request": {
+              "method": "PATCH",
+              "header": [
+                { "key": "Content-Type", "value": "application/json" }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\"amount\": 75.0, \"isLate\": true, \"memberId\": 1, \"categoryId\": 1, \"monthId\": 1}"
+              },
+              "url": {
+                "raw": "http://localhost:4000/api/dues/1",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "4000",
+                "path": ["api", "dues", "1"]
+              }
+            }
+          },
+          {
+            "name": "Delete Due by ID",
+            "request": {
+              "method": "DELETE",
+              "header": [],
+              "url": {
+                "raw": "http://localhost:4000/api/dues/1",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "4000",
+                "path": ["api", "dues", "1"]
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+  

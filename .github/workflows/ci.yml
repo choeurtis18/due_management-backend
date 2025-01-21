@@ -1,0 +1,38 @@
+name: CI/CD Workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Prisma migrations and seed
+        run: |
+          npx prisma migrate deploy
+          npm run reset-db
+    
+      - name: Run tests
+        run: npm test
+
+      - name: Deploy to production
+        run: |
+          # Commands to deploy your app (e.g. pushing to a remote server)
+          echo "Deploying to production"
