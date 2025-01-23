@@ -48,5 +48,9 @@ if (process.env.NODE_ENV !== 'test') {
   });
 }
 
+app.get('/', (req, res) => {
+  res.send('Backend is running!');
+});
+
 // Export de l'application pour utilisation dans les tests
 export default app;
