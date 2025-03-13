@@ -24,7 +24,7 @@ async function main() {
     await createUser();
 
     // Création des catégories
-    await createCategorie(5);
+    await createCategorie(1);
 
     // Création des mois
     const months = [
@@ -35,22 +35,24 @@ async function main() {
     await Promise.all(months.map((month) => createMonths(month, year)));
 
     // Création des membres
-    await createMember(15);
+    await createMember(2);
 
-    // Création des cotisations (Dues)
+    // Attendre que toutes les données soient créées avant d'ajouter les cotisations
     const members = await prisma.member.findMany();
     const categories = await prisma.category.findMany();
     const monthsData = await prisma.month.findMany();
 
     if (members.length > 0 && categories.length > 0 && monthsData.length > 0) {
       const duesPromises = [];
+
       members.forEach((member) => {
         categories.forEach((category) => {
           monthsData.forEach((month) => {
+            // Vérifier si la cotisation existe déjà avant d'insérer
             duesPromises.push(
               prisma.dues.create({
                 data: {
-                  amount: 10,
+                  amount: 0,
                   isLate: false,
                   memberId: member.id,
                   categoryId: category.id,
@@ -61,6 +63,7 @@ async function main() {
           });
         });
       });
+
       await Promise.all(duesPromises);
       console.log("Cotisations créées avec succès !");
     } else {

@@ -102,6 +102,23 @@ Gestionnaire de cotisations pour une association, comprenant une application fro
    - Frontend : [http://localhost:5173](http://localhost:5173)
    - Backend (API) : [http://localhost:4000](http://localhost:4000)
 
+6. Configuration BDD en local :
+   Backend :
+   - Appliquer les migrations Prisma
+     ```bash
+     npx prisma migrate dev --name init
+     ```
+   - Générer le client Prisma
+     ```bash
+     npx prisma generate
+     ```
+   - Insérer des données de base
+     ```bash
+     npx prisma db seed
+     ```
+
+   - Backend (API) : [http://localhost:4000](http://localhost:4000)
+
 ---
 
 ## **Scripts disponibles**

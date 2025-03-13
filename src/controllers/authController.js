@@ -40,41 +40,55 @@ export const register = async (req, res) => {
 };
 
 export const login = async (req, res) => {
-    console.log('Login endpoint called');
+    console.log('🔹 Login endpoint called');
+    console.log('🔹 Request body:', req.body);
+
     const { email, password } = req.body;
 
     if (!email || !password) {
+        console.log('❌ Champ manquant');
         return res.status(400).json({ error: 'Tous les champs sont requis : email, password' });
     }
-    console.log('Request body:', req.body);
 
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    console.log('🔹 Recherche de l’utilisateur dans la base de données',hashedPassword );
     try {
-        // Recherche de l'utilisateur par email
         const user = await prisma.user.findUnique({
             where: { email },
         });
 
-        if (!user)  return res.status(401).json({ error: 'Identifiants invalides' });
+        console.log('🔹 User found:', user);
 
-        // Compare le mot de passe fourni avec le mot de passe haché
+        if (!user) {
+            console.log('❌ Utilisateur non trouvé');
+            return res.status(401).json({ error: 'Identifiants invalides' });
+        }
+
+        // Vérifier si le mot de passe correspond
         const isPasswordValid = await bcrypt.compare(password, user.password);
+        console.log('🔹 Mot de passe valide:', isPasswordValid);
 
-        if (!isPasswordValid) return res.status(401).json({ error: 'Identifiants invalides' });
+        if (!isPasswordValid) {
+            console.log('❌ Mot de passe incorrect');
+            return res.status(401).json({ error: 'Identifiants invalides' });
+        }
 
-        // Génère un token JWT
         const token = jwt.sign(
             { id: user.id, username: user.username, role: user.role },
             process.env.JWT_SECRET,
             { expiresIn: '1h' }
         );
 
+        console.log('✅ Connexion réussie, token généré');
         res.status(200).json({
             message: 'Connexion réussie',
             token,
             user: { id: user.id, username: user.username, email: user.email, role: user.role },
         });
+
     } catch (error) {
-        console.error('Erreur lors de la connexion :', error);
+        console.error('❌ Erreur lors de la connexion :', error);
         res.status(500).json({ error: 'Erreur interne du serveur' });
     }
 };
