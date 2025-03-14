@@ -41,7 +41,6 @@ export const register = async (req, res) => {
 
 export const login = async (req, res) => {
     console.log('🔹 Login endpoint called');
-    console.log('🔹 Request body:', req.body);
 
     const { email, password } = req.body;
 
